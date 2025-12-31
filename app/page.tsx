@@ -1,4 +1,5 @@
 "use client";
+import BootSequence from "@/components/desktop/BootSequence";
 import FirstLaunchOverlay from "@/components/desktop/FirstLaunchOverlay";
 import DesktopBackground from "@/components/desktop/DesktopBackground";
 import TopBar from "@/components/desktop/TopBar";
