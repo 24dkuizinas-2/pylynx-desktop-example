@@ -2,7 +2,7 @@
 
 import { create } from "zustand";
 
-export type AppId = "notes" | "browser" | "settings" | "appstore" | "files";
+export type AppId = "notes" | "browser" | "settings" | "appstore" | "files" | "about";
 
 export type WindowEntry = {
   id: number;
@@ -30,7 +30,8 @@ const APP_TITLES: Record<AppId, string> = {
   browser: "Browser",
   settings: "Settings",
   appstore: "PyLynx App Store",
-  files: "Files"
+  files: "Files",
+  about: "About PyLynx"
 };
 
 export const useWindowStore = create<WindowStore>((set, get) => ({

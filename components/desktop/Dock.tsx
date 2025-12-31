@@ -7,7 +7,8 @@ const DOCK_APPS = [
   { id: "browser", name: "Browser", icon: "🌐" },
   { id: "appstore", name: "App Store", icon: "🛒" },
   { id: "files", name: "Files", icon: "📁" },
-  { id: "settings", name: "Settings", icon: "⚙️" }
+  { id: "settings", name: "Settings", icon: "⚙️" },
+  { id: "about", name: "About", icon: "🦊" }
 ] as const;
 
 export default function Dock() {

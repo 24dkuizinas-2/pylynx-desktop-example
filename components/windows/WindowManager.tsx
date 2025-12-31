@@ -7,13 +7,14 @@ import BrowserApp from "../apps/BrowserApp";
 import SettingsApp from "../apps/SettingsApp";
 import AppStoreApp from "../apps/AppStoreApp";
 import FileBrowserApp from "../apps/FileBrowserApp";
-
+import AboutPyLynxApp from "../apps/AboutPylynxApp";
 const APP_COMPONENTS = {
   notes: NotesApp,
   browser: BrowserApp,
   settings: SettingsApp,
   appstore: AppStoreApp,
-  files: FileBrowserApp
+  files: FileBrowserApp,
+  about: AboutPyLynxApp
 } as const;
 
 export default function WindowManager() {
