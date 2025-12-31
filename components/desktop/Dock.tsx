@@ -5,6 +5,8 @@ import { useWindowStore } from "@/store/useWindowStore";
 const DOCK_APPS = [
   { id: "notes", name: "Notes", icon: "📝" },
   { id: "browser", name: "Browser", icon: "🌐" },
+  { id: "appstore", name: "App Store", icon: "🛒" },
+  { id: "files", name: "Files", icon: "📁" },
   { id: "settings", name: "Settings", icon: "⚙️" }
 ] as const;
 
@@ -28,3 +30,4 @@ export default function Dock() {
     </div>
   );
 }
+

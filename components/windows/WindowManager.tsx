@@ -5,11 +5,15 @@ import WindowFrame from "./WindowFrame";
 import NotesApp from "../apps/NotesApp";
 import BrowserApp from "../apps/BrowserApp";
 import SettingsApp from "../apps/SettingsApp";
+import AppStoreApp from "../apps/AppStoreApp";
+import FileBrowserApp from "../apps/FileBrowserApp";
 
 const APP_COMPONENTS = {
   notes: NotesApp,
   browser: BrowserApp,
-  settings: SettingsApp
+  settings: SettingsApp,
+  appstore: AppStoreApp,
+  files: FileBrowserApp
 } as const;
 
 export default function WindowManager() {
@@ -40,3 +44,4 @@ export default function WindowManager() {
     </>
   );
 }
+
