@@ -9,7 +9,7 @@ export default function BootSequence() {
 
   const fullText = "PyLynx OS";
 
-  // Fade-in
+  // Fade-in mount
   useEffect(() => {
     setTimeout(() => setMounted(true), 10);
   }, []);
