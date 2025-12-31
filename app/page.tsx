@@ -1,5 +1,5 @@
 "use client";
-import BootSequence from "@/components/desktop/BootSequence";
+import BootManager from "@/components/desktop/BootManager";
 import FirstLaunchOverlay from "@/components/desktop/FirstLaunchOverlay";
 import DesktopBackground from "@/components/desktop/DesktopBackground";
 import TopBar from "@/components/desktop/TopBar";
@@ -9,7 +9,7 @@ import WindowManager from "@/components/windows/WindowManager";
 export default function Home() {
   return (
     <main className="w-screen h-screen overflow-hidden relative bg-black">
-      <BootSequence />
+      <BootManager />
       <FirstLaunchOverlay />
       <DesktopBackground />
       <TopBar />
