@@ -2,30 +2,37 @@
 
 import { useState, useEffect } from "react";
 
-export default function Bootloader({ onDone, onEnterBios }) {
+interface BootloaderProps {
+  onDone: () => void;
+  onEnterBios: () => void;
+}
+
+export default function Bootloader({ onDone, onEnterBios }: BootloaderProps) {
   const [visible, setVisible] = useState(true);
   const [selected, setSelected] = useState(0);
 
-  // Auto‑continue after 2 seconds
+  // Auto-continue after 2 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
       onDone();
     }, 2000);
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [onDone]);
 
   // F2 → BIOS
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.key === "F2") {
         setVisible(false);
         onEnterBios();
       }
     };
+
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, []);
+  }, [onEnterBios]);
 
   if (!visible) return null;
 
