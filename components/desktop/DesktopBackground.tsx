@@ -1,5 +1,5 @@
 // components/desktop/DesktopBackground.tsx
-
+"use client";
 export default function DesktopBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden">
