@@ -46,7 +46,7 @@ body {
 }
 
 .animate-bootLoad {
-  animation: bootLoad 2.4s ease-out forwards;
+  animation: bootLoad 10s ease-out forwards;
 }
 
 
