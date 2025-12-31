@@ -1,1 +1,34 @@
+"use client";
 
+import { useState } from "react";
+import Bootloader from "./Bootloader";
+import BiosScreen from "./BiosScreen";
+import BootLogs from "./BootLogs";
+import BootSequence from "./BootSequence";
+
+export default function BootManager() {
+  const [stage, setStage] = useState<"bootloader" | "bios" | "logs" | "sequence">("bootloader");
+
+  return (
+    <>
+      {stage === "bootloader" && (
+        <Bootloader
+          onDone={() => setStage("logs")}
+          onEnterBios={() => setStage("bios")}
+        />
+      )}
+
+      {stage === "bios" && (
+        <BiosScreen onDone={() => setStage("logs")} />
+      )}
+
+      {stage === "logs" && (
+        <BootLogs onDone={() => setStage("sequence")} />
+      )}
+
+      {stage === "sequence" && (
+        <BootSequence />
+      )}
+    </>
+  );
+}
