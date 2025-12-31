@@ -8,6 +8,7 @@ import WindowManager from "@/components/windows/WindowManager";
 export default function Home() {
   return (
     <main className="w-screen h-screen overflow-hidden relative bg-black">
+      <FirstLaunchOverlay />
       <DesktopBackground />
       <TopBar />
       <WindowManager />
