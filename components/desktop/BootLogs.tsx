@@ -2,6 +2,10 @@
 
 import { useState, useEffect } from "react";
 
+interface BootLogsProps {
+  onDone: () => void;
+}
+
 const LOGS = [
   "pylynx-kernel: Booting PyLynx Kernel 1.0",
   "fox-init: Loading fox‑spirit modules",
@@ -11,14 +15,16 @@ const LOGS = [
   "pylynx-init: Starting userland…",
 ];
 
-export default function BootLogs({ onDone }) {
-  const [lines, setLines] = useState([]);
+export default function BootLogs({ onDone }: BootLogsProps) {
+  const [lines, setLines] = useState<string[]>([]);
 
   useEffect(() => {
     let i = 0;
+
     const interval = setInterval(() => {
       setLines((prev) => [...prev, LOGS[i]]);
       i++;
+
       if (i >= LOGS.length) {
         clearInterval(interval);
         setTimeout(onDone, 600);
@@ -26,7 +32,7 @@ export default function BootLogs({ onDone }) {
     }, 300);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [onDone]);
 
   return (
     <div className="fixed inset-0 bg-black text-green-500 font-mono text-sm p-4 z-[999999999]">
