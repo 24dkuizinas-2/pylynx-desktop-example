@@ -1,4 +1,3 @@
-// components/windows/WindowManager.tsx
 "use client";
 
 import { useWindowStore } from "@/store/useWindowStore";
