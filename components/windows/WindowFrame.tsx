@@ -1,8 +1,14 @@
 "use client";
 
+import { ReactNode } from "react";
 import { useWindowStore } from "@/store/useWindowStore";
 
-export default function WindowFrame({ id, children }) {
+type WindowFrameProps = {
+  id: number;
+  children: ReactNode;
+};
+
+export default function WindowFrame({ id, children }: WindowFrameProps) {
   const closeWindow = useWindowStore((s) => s.closeWindow);
 
   return (
@@ -33,9 +39,7 @@ export default function WindowFrame({ id, children }) {
       </div>
 
       {/* Window content */}
-      <div className="p-4">
-        {children}
-      </div>
+      <div className="p-4">{children}</div>
     </div>
   );
 }
