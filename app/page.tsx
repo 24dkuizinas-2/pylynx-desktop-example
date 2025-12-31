@@ -1,5 +1,5 @@
 "use client";
-
+import FirstLaunchOverlay from "@/components/desktop/FirstLaunchOverlay";
 import DesktopBackground from "@/components/desktop/DesktopBackground";
 import TopBar from "@/components/desktop/TopBar";
 import Dock from "@/components/desktop/Dock";
