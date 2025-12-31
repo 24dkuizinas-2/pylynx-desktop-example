@@ -2,17 +2,41 @@
 
 import { useWindowStore } from "@/store/useWindowStore";
 import WindowFrame from "./WindowFrame";
+import NotesApp from "../apps/NotesApp";
+import BrowserApp from "../apps/BrowserApp";
+import SettingsApp from "../apps/SettingsApp";
+
+const APP_COMPONENTS = {
+  notes: NotesApp,
+  browser: BrowserApp,
+  settings: SettingsApp
+} as const;
 
 export default function WindowManager() {
   const windows = useWindowStore((s) => s.windows);
 
   return (
     <>
-      {windows.map((w) => (
-        <WindowFrame key={w.id} id={w.id}>
-          <w.app />
-        </WindowFrame>
-      ))}
+      {windows
+        .slice()
+        .sort((a, b) => a.zIndex - b.zIndex)
+        .map((w) => {
+          const AppComponent = APP_COMPONENTS[w.appId];
+          return (
+            <WindowFrame
+              key={w.id}
+              id={w.id}
+              title={w.title}
+              x={w.x}
+              y={w.y}
+              width={w.width}
+              height={w.height}
+              zIndex={w.zIndex}
+            >
+              <AppComponent />
+            </WindowFrame>
+          );
+        })}
     </>
   );
 }
