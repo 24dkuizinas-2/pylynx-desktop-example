@@ -14,21 +14,23 @@ const DOCK_APPS = [
 export default function Dock() {
   const openWindow = useWindowStore((s) => s.openWindow);
 
-  return (
-    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 flex gap-3 px-4 py-2 bg-black/40 backdrop-blur-md rounded-2xl border border-zinc-700">
-      {DOCK_APPS.map((app) => (
-        <button
-          key={app.id}
-          onClick={() => openWindow(app.id as any)}
-          className="flex flex-col items-center text-xs text-zinc-200 hover:text-white"
-        >
-          <div className="w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center text-2xl hover:scale-110 transition-transform">
-            {app.icon}
-          </div>
-          <span className="mt-1 text-[10px]">{app.name}</span>
-        </button>
-      ))}
-    </div>
-  );
+return (
+  <div className="flex gap-4 p-4 bg-zinc-900 rounded-2xl">
+    {DOCK_APPS.map((app) => (
+      <button
+        key={app.id}
+        onClick={() => openWindow(app.id)}
+        className="
+          w-10 h-10 bg-zinc-800 rounded-xl flex items-center justify-center text-2xl
+          transition-transform duration-150
+          hover:scale-125 hover:-translate-y-1
+        "
+      >
+        {app.icon}
+      </button>
+    ))}
+  </div>
+
+);
 }
 

@@ -29,9 +29,11 @@ export default function WindowFrame({
   const resizeWindow = useWindowStore((s) => s.resizeWindow);
   const focusWindow = useWindowStore((s) => s.focusWindow);
 
+  // Dragging state
   const dragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
 
+  // Resizing state
   const resizing = useRef(false);
   const resizeStart = useRef({
     width,
@@ -40,13 +42,20 @@ export default function WindowFrame({
     mouseY: 0
   });
 
-  const [isMounted, setIsMounted] = useState(false);
+  // Open/close animations
+  const [mounted, setMounted] = useState(false);
+  const [closing, setClosing] = useState(false);
 
-  // simple mount animation flag
-  if (!isMounted) {
-    setTimeout(() => setIsMounted(true), 0);
+  if (!mounted) {
+    setTimeout(() => setMounted(true), 0);
   }
 
+  const handleClose = () => {
+    setClosing(true);
+    setTimeout(() => closeWindow(id), 150);
+  };
+
+  // Drag start
   const onMouseDownTitle = (e: React.MouseEvent) => {
     e.stopPropagation();
     dragging.current = true;
@@ -57,28 +66,7 @@ export default function WindowFrame({
     focusWindow(id);
   };
 
-  const onMouseMove = (e: React.MouseEvent) => {
-    if (dragging.current) {
-      const newX = e.clientX - dragOffset.current.x;
-      const newY = e.clientY - dragOffset.current.y;
-      moveWindow(id, newX, newY);
-    }
-    if (resizing.current) {
-      const dx = e.clientX - resizeStart.current.mouseX;
-      const dy = e.clientY - resizeStart.current.mouseY;
-      resizeWindow(
-        id,
-        resizeStart.current.width + dx,
-        resizeStart.current.height + dy
-      );
-    }
-  };
-
-  const onMouseUp = () => {
-    dragging.current = false;
-    resizing.current = false;
-  };
-
+  // Resize start
   const onResizeHandleMouseDown = (e: React.MouseEvent) => {
     e.stopPropagation();
     resizing.current = true;
@@ -91,6 +79,24 @@ export default function WindowFrame({
     focusWindow(id);
   };
 
+  // Movement
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (dragging.current) {
+      moveWindow(id, e.clientX - dragOffset.current.x, e.clientY - dragOffset.current.y);
+    }
+
+    if (resizing.current) {
+      const dx = e.clientX - resizeStart.current.mouseX;
+      const dy = e.clientY - resizeStart.current.mouseY;
+      resizeWindow(id, resizeStart.current.width + dx, resizeStart.current.height + dy);
+    }
+  };
+
+  const onMouseUp = () => {
+    dragging.current = false;
+    resizing.current = false;
+  };
+
   return (
     <div
       style={{
@@ -100,26 +106,49 @@ export default function WindowFrame({
         width,
         height,
         zIndex,
-        transform: isMounted ? "scale(1)" : "scale(0.9)",
-        opacity: isMounted ? 1 : 0,
-        transition: "transform 120ms ease-out, opacity 120ms ease-out"
+
+        // Animation states
+        transition: dragging.current || resizing.current
+          ? "none"
+          : "transform 160ms ease, opacity 160ms ease",
+
+        transform: closing
+          ? "scale(0.9)"
+          : dragging.current
+          ? "scale(1.02)"
+          : mounted
+          ? "scale(1)"
+          : "scale(0.9)",
+
+        opacity: closing ? 0 : mounted ? 1 : 0,
+
+        boxShadow: dragging.current
+          ? "0 12px 32px rgba(0,0,0,0.4)"
+          : "0 4px 16px rgba(0,0,0,0.25)"
       }}
-      className="bg-zinc-900 text-white border border-zinc-700 rounded-lg shadow-xl overflow-hidden select-none"
+      className="bg-zinc-900 text-white border border-zinc-700 rounded-lg overflow-hidden select-none"
       onMouseMove={onMouseMove}
       onMouseUp={onMouseUp}
       onMouseLeave={onMouseUp}
       onMouseDown={() => focusWindow(id)}
     >
-      {/* Title bar */}
+      {/* Title Bar */}
       <div
-        className="flex justify-between items-center px-3 py-1.5 bg-zinc-800 border-b border-zinc-700 cursor-move"
+        className="
+          flex justify-between items-center
+          px-3 py-1.5
+          bg-zinc-800 border-b border-zinc-700
+          cursor-move
+          text-xs
+        "
         onMouseDown={onMouseDownTitle}
       >
-        <span className="text-xs text-zinc-200">{title}</span>
+        <span className="text-zinc-200">{title}</span>
+
         <button
           onClick={(e) => {
             e.stopPropagation();
-            closeWindow(id);
+            handleClose();
           }}
           className="text-red-400 hover:text-red-300 text-xs"
         >
@@ -132,12 +161,16 @@ export default function WindowFrame({
         {children}
       </div>
 
-      {/* Resize handle (bottom-right) */}
+      {/* Resize Handle */}
       <div
-        className="absolute bottom-1 right-1 w-3 h-3 border-r-2 border-b-2 border-zinc-500 cursor-se-resize"
+        className="
+          absolute bottom-1 right-1
+          w-3 h-3
+          border-r-2 border-b-2 border-zinc-500
+          cursor-se-resize
+        "
         onMouseDown={onResizeHandleMouseDown}
       />
     </div>
   );
 }
-
