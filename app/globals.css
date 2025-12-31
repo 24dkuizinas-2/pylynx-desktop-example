@@ -21,6 +21,35 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+@keyframes bootFox {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bootFox {
+  animation: bootFox 1.2s ease-out forwards;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes bootLoad {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.animate-bootLoad {
+  animation: bootLoad 2.4s ease-out forwards;
+}
+
+
 
 @keyframes foxBounce {
   0%, 100% { transform: translateY(0); }
