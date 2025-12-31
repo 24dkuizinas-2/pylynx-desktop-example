@@ -2,7 +2,18 @@
 
 import { create } from "zustand";
 
-export const useWindowStore = create((set) => ({
+type WindowEntry = {
+  id: number;
+  app: any;
+};
+
+type WindowStore = {
+  windows: WindowEntry[];
+  openWindow: (app: any) => void;
+  closeWindow: (id: number) => void;
+};
+
+export const useWindowStore = create<WindowStore>((set) => ({
   windows: [],
 
   openWindow: (app) =>
