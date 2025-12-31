@@ -34,9 +34,9 @@ export default function BootSequence() {
     return () => clearInterval(interval);
   }, [mounted]);
 
-  // Auto-hide after 3 seconds
+  // Auto-hide after 10 seconds (synced with boot chime)
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 3000);
+    const timer = setTimeout(() => setVisible(false), 10000);
     return () => clearTimeout(timer);
   }, []);
 
