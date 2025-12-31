@@ -1,4 +1,5 @@
-// app/page.tsx
+"use client";
+
 import DesktopBackground from "@/components/desktop/DesktopBackground";
 import TopBar from "@/components/desktop/TopBar";
 import Dock from "@/components/desktop/Dock";
