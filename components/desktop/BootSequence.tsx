@@ -14,6 +14,12 @@ export default function BootSequence() {
     setTimeout(() => setMounted(true), 10);
   }, []);
 
+  useEffect(() => {
+  const audio = new Audio("/pylynx-chime.mp3");
+  audio.volume = 0.4;
+  audio.play().catch(() => {});
+}, []);
+
   // Typing animation
   useEffect(() => {
     if (!mounted) return;
