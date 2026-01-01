@@ -18,6 +18,7 @@ useEffect(() => {
 
   window.addEventListener("keydown", handler);
   return () => window.removeEventListener("keydown", handler);
+  {showDiag && <BiosDiagnostics onExit={() => setShowDiag(false)} />}
 }, []);
 
   useEffect(() => {
