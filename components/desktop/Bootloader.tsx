@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Bootloader({
   onDone,
@@ -9,12 +9,24 @@ export default function Bootloader({
   onDone: () => void;
   onEnterBios: () => void;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    console.log("Bootloader mounted");
+
+    // Force focus so key events always work
+    containerRef.current?.focus();
+
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "b") {
+      console.log("Key pressed:", e.key);
+
+      if (e.key === "b" || e.key === "B") {
+        console.log("Entering BIOS");
         onEnterBios();
       }
+
       if (e.key === "Enter") {
+        console.log("Continuing boot");
         onDone();
       }
     };
@@ -24,7 +36,11 @@ export default function Bootloader({
   }, [onDone, onEnterBios]);
 
   return (
-    <div className="fixed inset-0 bg-black text-green-400 font-mono p-6 text-sm">
+    <div
+      ref={containerRef}
+      tabIndex={0}
+      className="fixed inset-0 bg-black text-green-400 font-mono p-6 text-sm outline-none"
+    >
       <div className="mb-2">PyLynx Bootloader</div>
       <div className="text-zinc-500 text-xs">
         Press B for BIOS • Press Enter to continue
