@@ -12,21 +12,14 @@ export default function Bootloader({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("Bootloader mounted");
-
-    // Force focus so key events always work
     containerRef.current?.focus();
 
     const handler = (e: KeyboardEvent) => {
-      console.log("Key pressed:", e.key);
-
       if (e.key === "b" || e.key === "B") {
-        console.log("Entering BIOS");
         onEnterBios();
       }
 
       if (e.key === "Enter") {
-        console.log("Continuing boot");
         onDone();
       }
     };
@@ -39,10 +32,10 @@ export default function Bootloader({
     <div
       ref={containerRef}
       tabIndex={0}
-      className="fixed inset-0 bg-black text-green-400 font-mono p-6 text-sm outline-none"
+      className="fixed inset-0 bg-red-600 text-white font-mono p-6 text-3xl z-[999999999]"
     >
-      <div className="mb-2">PyLynx Bootloader</div>
-      <div className="text-zinc-500 text-xs">
+      BOOTLOADER SHOULD BE VISIBLE  
+      <div className="text-xl mt-4">
         Press B for BIOS • Press Enter to continue
       </div>
     </div>
