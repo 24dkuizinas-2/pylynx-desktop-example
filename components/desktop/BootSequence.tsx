@@ -13,11 +13,12 @@ export default function BootSequence({ onDone }: BootSequenceProps) {
   const audio = new Audio("/pylynx-chime.mp3");
   audio.volume = 0.4;
 
-  const playTimer = setTimeout(() => {
-    audio.play().catch(err => console.log("Audio blocked:", err));
-  }, 300); // small delay helps bypass autoplay rules
-
-  return () => clearTimeout(playTimer);
+  // Delay until after hydration + next paint
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      audio.play().catch(err => console.log("Audio blocked:", err));
+    }, 50);
+  });
 }, []);
 
 
