@@ -2,15 +2,15 @@
 
 import Dock from "./Dock";
 import WindowManager from "@/components/windows/WindowManager";
-import Wallpaper from "@/components/desktop/Wallpaper";
+import DesktopBackground from "@/components/desktop/DesktopBackground";
 import TopBar from "@/components/desktop/TopBar";
 
 export default function Desktop() {
   return (
     <div className="relative w-screen h-screen overflow-hidden">
 
-      {/* Wallpaper */}
-      <Wallpaper />
+      {/* Desktop Background */}
+      <DesktopBackground />
 
       {/* Desktop Icons */}
       <div className="absolute top-4 left-4 space-y-4 text-white">
