@@ -21,10 +21,10 @@ export default function Bootloader({ onDone, onEnterBios }: BootloaderProps) {
     return () => clearTimeout(timer);
   }, [onDone]);
 
-  // F2 → BIOS
+  // B → BIOS
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "F2") {
+      if (e.key === "b") {
         setVisible(false);
         onEnterBios();
       }
