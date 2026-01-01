@@ -1,17 +1,68 @@
 "use client";
 
-import DesktopBackground from "@/components/desktop/DesktopBackground";
-import TopBar from "@/components/desktop/TopBar";
-import Dock from "@/components/desktop/Dock";
-import WindowManager from "@/components/windows/WindowManager";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+export default function HomePage() {
+  const router = useRouter();
+
   return (
-    <main className="w-screen h-screen overflow-hidden relative bg-black">
-      <DesktopBackground />
-      <TopBar />
-      <WindowManager />
-      <Dock />
-    </main>
+    <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
+
+      {/* TOP BAR WITH LOGIN */}
+      <header className="w-full flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          {/* FOX MASCOT (placeholder emoji or replace with image) */}
+          <div className="text-3xl">🦊</div>
+          <span className="text-xl font-semibold tracking-wide">PyLynx</span>
+        </div>
+
+        <button
+          onClick={() => router.push("/login")}
+          className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm font-medium transition"
+        >
+          Log In
+        </button>
+      </header>
+
+      {/* SECTION 1 — Get Started */}
+      <section className="flex flex-col items-center justify-center flex-1 p-10 border-b border-white/10">
+        <h2 className="text-4xl font-bold mb-4 tracking-wide">
+          Get Started
+        </h2>
+
+        <p className="text-zinc-400 max-w-xl text-center mb-8">
+          Boot into the PyLynx OS demo and experience the fox‑core boot chain,
+          mythic desktop environment, and youth‑powered app system.  
+          Built for exploration. Designed for remixing.
+        </p>
+
+        <button
+          onClick={() => router.push("/demo")}
+          className="
+            px-8 py-3 rounded-xl text-lg font-semibold
+            bg-purple-600 hover:bg-purple-700
+            shadow-[0_0_20px_rgba(128,0,255,0.4)]
+            transition-all
+          "
+        >
+          Launch Demo
+        </button>
+      </section>
+
+      {/* SECTION 2 — For Youth Remixers */}
+      <section className="flex flex-col items-center justify-center flex-1 p-10">
+        <h2 className="text-4xl font-bold mb-4 tracking-wide">
+          For Youth Remixers
+        </h2>
+
+        <p className="text-zinc-400 max-w-xl text-center">
+          PyLynx is built to be hacked, remixed, and reshaped.  
+          Dive into the source code, customize the UI, rewrite the bootloader,
+          or build your own apps.  
+          Every part of PyLynx is designed to be teachable and remixable.
+        </p>
+      </section>
+
+    </div>
   );
 }

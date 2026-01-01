@@ -216,7 +216,7 @@ export default function AboutPyLynxApp() {
             <li>Install Ubuntu or Debian inside the VM.</li>
             <li>Open a terminal and run:</li>
             <pre className="bg-black/40 px-2 py-1 rounded text-[11px]">
-              pl -i pylynx-desktop
+              ./pylynx-compat.sh
             </pre>
             <button
               onClick={() => copy("pl -i pylynx-desktop")}
@@ -231,3 +231,4 @@ export default function AboutPyLynxApp() {
     </div>
   );
 }
+
