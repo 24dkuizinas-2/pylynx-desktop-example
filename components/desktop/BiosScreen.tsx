@@ -14,7 +14,7 @@ export default function BiosScreen({ onDone }: { onDone: () => void }) {
 
       if (e.key === "Escape") {
         if (showDiag) {
-          setShowDiag(false); // close diagnostics
+          setShowDiag(false);
         } else {
           onDone(); // exit BIOS
         }
@@ -31,10 +31,7 @@ export default function BiosScreen({ onDone }: { onDone: () => void }) {
       <div>Press D for Diagnostics</div>
       <div>Press ESC to Exit BIOS</div>
 
-      {showDiag && (
-        <BiosDiagnostics onExit={() => setShowDiag(false)} />
-      )}
+      {showDiag && <BiosDiagnostics onExit={() => setShowDiag(false)} />}
     </div>
   );
 }
-
