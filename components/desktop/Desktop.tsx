@@ -15,7 +15,7 @@ export default function Desktop() {
       {/* Desktop Icons */}
       <div className="absolute top-4 left-4 space-y-4 text-white">
         <div className="cursor-pointer hover:opacity-80">My Files</div>
-        <div className="cursor-pointer hover:opacity-80">Browser</div>
+        
       </div>
 
       {/* Window Manager */}
