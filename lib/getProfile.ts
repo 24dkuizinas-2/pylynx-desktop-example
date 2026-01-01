@@ -1,7 +1,8 @@
 import { getSupabase } from "./supabase";
-const supabase = getSupabase();
 
 export async function getProfile() {
+  const supabase = getSupabase();   // ← moved inside the function
+
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return null;
 
