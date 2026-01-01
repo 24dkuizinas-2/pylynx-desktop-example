@@ -1,53 +1,35 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-interface BootloaderProps {
+export default function Bootloader({
+  onDone,
+  onEnterBios,
+}: {
   onDone: () => void;
   onEnterBios: () => void;
-}
-
-export default function Bootloader({ onDone, onEnterBios }: BootloaderProps) {
-  const [visible, setVisible] = useState(true);
-  const [selected, setSelected] = useState(0);
-
-  // Auto-continue after 2 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-      onDone();
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, [onDone]);
-
-  // B → BIOS
+}) {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "b") {
-        setVisible(false);
+      if (e.key === "F2") {
         onEnterBios();
+      }
+      if (e.key === "Enter") {
+        onDone();
       }
     };
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [onEnterBios]);
-
-  if (!visible) return null;
+  }, [onDone, onEnterBios]);
 
   return (
-    <div className="fixed inset-0 bg-black text-green-500 font-mono text-sm p-8 z-[999999999]">
-      <div className="mb-4">PyLynx Bootloader v1.0</div>
-
-      <div className="border border-green-500 p-4 w-80">
-        <div className={selected === 0 ? "bg-green-500 text-black px-2" : "px-2"}>
-          PyLynx OS
-        </div>
-        <div className="px-2 opacity-50">Advanced Options</div>
+    <div className="fixed inset-0 bg-black text-green-400 font-mono p-6 text-sm">
+      <div>PyLynx Bootloader</div>
+      <div className="mt-2 text-zinc-500 text-xs">
+        Press F2 for BIOS • Press Enter to continue
       </div>
-
-      <div className="mt-4 opacity-70">Press F2 for PyLynx BIOS</div>
     </div>
   );
 }
+
