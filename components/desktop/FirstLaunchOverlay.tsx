@@ -9,6 +9,13 @@ export default function FirstLaunchOverlay() {
 
   const fullText = "Do you want to check out the lynx before you bite the apple?";
 
+interface FirstLaunchOverlayProps {
+  onDone: () => void;
+}
+
+export default function FirstLaunchOverlay({ onDone }: FirstLaunchOverlayProps) {
+
+  
   // Fade-in mount
   useEffect(() => {
     setTimeout(() => setMounted(true), 10);
@@ -56,17 +63,9 @@ export default function FirstLaunchOverlay() {
           <span className="animate-blink">|</span>
         </div>
 
-        <button
-          onClick={() => setVisible(false)}
-          className="
-            mt-4 px-6 py-2 rounded-lg bg-zinc-800 text-zinc-200
-            hover:bg-zinc-700 transition-all duration-150
-            hover:shadow-lg hover:shadow-black/40
-            active:scale-95 font-semibold
-          "
-        >
-          Continue
-        </button>
+        <button onClick={onDone} ...>
+  Continue
+</button>
       </div>
     </div>
   );
