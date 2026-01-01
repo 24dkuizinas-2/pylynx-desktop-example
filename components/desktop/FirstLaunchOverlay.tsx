@@ -22,20 +22,20 @@ export default function FirstLaunchOverlay({ onDone }: FirstLaunchOverlayProps) 
   }, []);
 
   // Typing animation
-  useEffect(() => {
-    if (!mounted) return;
+useEffect(() => {
+  if (!visible) return; // only type when overlay is actually shown
 
-    let i = 0;
-    const interval = setInterval(() => {
-      setTypedText(fullText.slice(0, i));
-      i++;
-      if (i > fullText.length) clearInterval(interval);
-    }, 35);
+  setTypedText(""); // reset typing each time it becomes visible
 
-    return () => clearInterval(interval);
-  }, [mounted]);
+  let i = 0;
+  const interval = setInterval(() => {
+    setTypedText(fullText.slice(0, i));
+    i++;
+    if (i > fullText.length) clearInterval(interval);
+  }, 35);
 
-  if (!visible) return null;
+  return () => clearInterval(interval);
+}, [visible]);
 
   return (
     <div
