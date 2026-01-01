@@ -6,6 +6,7 @@ import BiosScreen from "./BiosScreen";
 import BootLogs from "./BootLogs";
 import BootSequence from "./BootSequence";
 import FirstLaunchOverlay from "./FirstLaunchOverlay";
+import Desktop from "./Desktop";
 
 export default function BootManager() {
   const [stage, setStage] = useState<
@@ -36,7 +37,8 @@ export default function BootManager() {
       {stage === "overlay" && (
         <FirstLaunchOverlay onDone={() => setStage("done")} />
       )}
+
+      {stage === "done" && <Desktop />}
     </>
   );
 }
-
