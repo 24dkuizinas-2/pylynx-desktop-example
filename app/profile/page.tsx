@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getSupabase } from "@/lib/supabase";
-const supabase = getSupabase();
 import { getProfile } from "@/lib/getProfile";
 
 export default function ProfilePage() {
+  const supabase = getSupabase();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState<any>(null);

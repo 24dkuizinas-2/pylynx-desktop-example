@@ -3,10 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getSupabase } from "@/lib/supabase";
-const supabase = getSupabase();
+
 
 
 export default function SignupPage() {
+  const supabase = getSupabase();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

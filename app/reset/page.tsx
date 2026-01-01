@@ -3,9 +3,10 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { getSupabase } from "@/lib/supabase";
-const supabase = getSupabase();
+
 
 export default function ResetPage() {
+  const supabase = getSupabase();
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [infoMsg, setInfoMsg] = useState("");
