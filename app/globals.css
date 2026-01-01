@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Root variables */
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,6 +22,10 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ----------------------------- */
+/* BOOT FOX POP-IN ANIMATION     */
+/* ----------------------------- */
 @keyframes bootFox {
   0% { transform: scale(0.8); opacity: 0; }
   50% { transform: scale(1.1); opacity: 1; }
@@ -31,6 +36,9 @@ body {
   animation: bootFox 1.2s ease-out forwards;
 }
 
+/* ----------------------------- */
+/* CURSOR BLINK                  */
+/* ----------------------------- */
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
@@ -40,6 +48,9 @@ body {
   animation: blink 1s infinite;
 }
 
+/* ----------------------------- */
+/* BOOT LOADING BAR              */
+/* ----------------------------- */
 @keyframes bootLoad {
   0% { width: 0%; }
   100% { width: 100%; }
@@ -49,8 +60,9 @@ body {
   animation: bootLoad 10s ease-out forwards;
 }
 
-
-
+/* ----------------------------- */
+/* FOX BOUNCE (OVERLAY)          */
+/* ----------------------------- */
 @keyframes foxBounce {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
@@ -60,24 +72,9 @@ body {
   animation: foxBounce 1.6s infinite ease-in-out;
 }
 
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  50.01%, 100% { opacity: 0; }
-}
-
-.animate-blink {
-  animation: blink 1s infinite;
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(4px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade {
-  animation: fade 200ms ease-out;
-}
-
+/* ----------------------------- */
+/* FADE-IN ANIMATION             */
+/* ----------------------------- */
 @keyframes fade {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
@@ -86,16 +83,11 @@ body {
 .animate-fade {
   animation: fade 180ms ease-out;
 }
+
+/* ----------------------------- */
+/* SCROLLBAR                     */
+/* ----------------------------- */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-}
-
-@keyframes foxBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-.animate-fox {
-  animation: foxBounce 2s infinite ease-in-out;
 }
