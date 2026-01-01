@@ -3,7 +3,8 @@ export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
+const supabase = getSupabase();
 import { getProfile } from "@/lib/getProfile";
 
 export default function DashboardPage() {
