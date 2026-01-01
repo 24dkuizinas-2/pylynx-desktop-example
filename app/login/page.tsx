@@ -43,7 +43,7 @@ export default function LoginPage() {
 
         {/* Login Button */}
         <button
-          onClick={() => router.push("/demo")}
+          onClick={() => router.push("/dashboard")}
           className="
             w-full px-4 py-3 rounded-xl text-lg font-semibold
             bg-purple-600 hover:bg-purple-700
