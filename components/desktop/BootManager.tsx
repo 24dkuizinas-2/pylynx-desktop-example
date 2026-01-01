@@ -7,7 +7,10 @@ import BootLogs from "./BootLogs";
 import BootSequence from "./BootSequence";
 
 export default function BootManager() {
-  const [stage, setStage] = useState<"bootloader" | "bios" | "logs" | "sequence">("bootloader");
+  const [stage, setStage] = useState<
+  "bootloader" | "bios" | "logs" | "sequence" | "overlay" | "done"
+>("bootloader");
+
 
   return (
     <>
