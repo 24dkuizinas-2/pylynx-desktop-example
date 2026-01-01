@@ -8,6 +8,17 @@ interface BiosScreenProps {
 
 export default function BiosScreen({ onDone }: BiosScreenProps) {
   const [visible, setVisible] = useState(true);
+const [showDiag, setShowDiag] = useState(false);
+
+useEffect(() => {
+  const handler = (e: KeyboardEvent) => {
+    if (e.key === "d" || e.key === "D") setShowDiag(true);
+    if (e.key === "Escape") setShowDiag(false);
+  };
+
+  window.addEventListener("keydown", handler);
+  return () => window.removeEventListener("keydown", handler);
+}, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
