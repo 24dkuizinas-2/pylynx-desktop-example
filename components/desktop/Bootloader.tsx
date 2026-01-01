@@ -36,6 +36,16 @@ export default function Bootloader({
   }, [onDone, onEnterBios]);
 
   return (
+<div
+  ref={containerRef}
+  tabIndex={0}
+  className="fixed inset-0 bg-red-600 text-white font-mono p-6 text-3xl z-[999999999]"
+>
+  BOOTLOADER SHOULD BE VISIBLE  
+  Press B for BIOS • Press Enter to continue
+</div>
+
+    
     <div
       ref={containerRef}
       tabIndex={0}
