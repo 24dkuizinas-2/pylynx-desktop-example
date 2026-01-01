@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
+import BiosDiagnostics from "./BiosDiagnostics";
 interface BiosScreenProps {
   onDone: () => void;
 }
