@@ -9,6 +9,13 @@ interface BootSequenceProps {
 export default function BootSequence({ onDone }: BootSequenceProps) {
   const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+  const audio = new Audio("/pylynx-chime.mp3");
+  audio.volume = 0.4;
+  audio.play().catch(() => {});
+}, []);
+
+
   // Fade-in mount
   useEffect(() => {
     setTimeout(() => setMounted(true), 10);
