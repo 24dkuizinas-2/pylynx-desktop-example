@@ -11,7 +11,7 @@ export default function Bootloader({
 }) {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "F2") {
+      if (e.key === "b") {
         onEnterBios();
       }
       if (e.key === "Enter") {
