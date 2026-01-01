@@ -44,12 +44,12 @@ export default function BootSequence({ onDone }: BootSequenceProps) {
 
   // Auto-hide after 10 seconds (synced with boot chime)
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(false), 10000);
-    return () => clearTimeout(timer);
-  }, []);
+  const timer = setTimeout(() => {
+    onDone();
+  }, 10000); // matches your 10s chime
 
-  if (!visible) return null;
-
+  return () => clearTimeout(timer);
+}, [onDone]);
   return (
     <div
       className={`
