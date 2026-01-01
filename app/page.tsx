@@ -8,6 +8,22 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
 
+      {/* TOP BAR WITH LOGIN */}
+      <header className="w-full flex items-center justify-between px-6 py-4 border-b border-white/10">
+        <div className="flex items-center gap-3">
+          {/* FOX MASCOT (placeholder emoji or replace with image) */}
+          <div className="text-3xl">🦊</div>
+          <span className="text-xl font-semibold tracking-wide">PyLynx</span>
+        </div>
+
+        <button
+          onClick={() => router.push("/login")}
+          className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-sm font-medium transition"
+        >
+          Log In
+        </button>
+      </header>
+
       {/* SECTION 1 — Get Started */}
       <section className="flex flex-col items-center justify-center flex-1 p-10 border-b border-white/10">
         <h2 className="text-4xl font-bold mb-4 tracking-wide">
@@ -16,7 +32,8 @@ export default function HomePage() {
 
         <p className="text-zinc-400 max-w-xl text-center mb-8">
           Boot into the PyLynx OS demo and experience the fox‑core boot chain,
-          desktop environment, and app system.
+          mythic desktop environment, and youth‑powered app system.  
+          Built for exploration. Designed for remixing.
         </p>
 
         <button
@@ -39,9 +56,10 @@ export default function HomePage() {
         </h2>
 
         <p className="text-zinc-400 max-w-xl text-center">
-          Dive into the PyLynx source code, remix the UI, customize the boot
-          sequence, and build your own apps. Everything is designed to be
-          teachable, hackable, and youth‑friendly.
+          PyLynx is built to be hacked, remixed, and reshaped.  
+          Dive into the source code, customize the UI, rewrite the bootloader,
+          or build your own apps.  
+          Every part of PyLynx is designed to be teachable and remixable.
         </p>
       </section>
 
