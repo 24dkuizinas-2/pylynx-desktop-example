@@ -6,18 +6,27 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
 
       {/* SECTION 1 — Get Started */}
-      <section className="flex flex-col items-center justify-center flex-1 p-10 border-b border-zinc-800">
-        <h2 className="text-3xl font-bold mb-4">Get Started</h2>
-        <p className="text-zinc-400 max-w-xl text-center mb-6">
-          Explore the PyLynx OS demo and see how the system boots, loads, and runs apps.
+      <section className="flex flex-col items-center justify-center flex-1 p-10 border-b border-white/10">
+        <h2 className="text-4xl font-bold mb-4 tracking-wide">
+          Get Started
+        </h2>
+
+        <p className="text-zinc-400 max-w-xl text-center mb-8">
+          Boot into the PyLynx OS demo and experience the fox‑core boot chain,
+          desktop environment, and app system.
         </p>
 
         <button
           onClick={() => router.push("/demo")}
-          className="px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl text-lg font-semibold transition"
+          className="
+            px-8 py-3 rounded-xl text-lg font-semibold
+            bg-purple-600 hover:bg-purple-700
+            shadow-[0_0_20px_rgba(128,0,255,0.4)]
+            transition-all
+          "
         >
           Launch Demo
         </button>
@@ -25,10 +34,14 @@ export default function HomePage() {
 
       {/* SECTION 2 — For Youth Remixers */}
       <section className="flex flex-col items-center justify-center flex-1 p-10">
-        <h2 className="text-3xl font-bold mb-4">For Youth Remixers</h2>
+        <h2 className="text-4xl font-bold mb-4 tracking-wide">
+          For Youth Remixers
+        </h2>
+
         <p className="text-zinc-400 max-w-xl text-center">
-          Learn how PyLynx works under the hood. Remix the UI, customize the boot flow,
-          and build your own apps using simple, teachable components.
+          Dive into the PyLynx source code, remix the UI, customize the boot
+          sequence, and build your own apps. Everything is designed to be
+          teachable, hackable, and youth‑friendly.
         </p>
       </section>
 
