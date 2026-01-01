@@ -76,12 +76,6 @@ export default function AboutPyLynxApp() {
               Why switch to PyLynx?
             </button>
 
-            <button
-              onClick={() => setView("compat")}
-              className="text-xs text-zinc-300 hover:text-white underline"
-            >
-              Check system compatibility
-            </button>
 
             <button
               onClick={() => setView("vm")}
@@ -113,12 +107,12 @@ export default function AboutPyLynxApp() {
               Copy command
             </button>
 
-            <li>Run the PyLynx installer:</li>
+            <li>Run the PyLynx Compadibility Checker:</li>
             <pre className="bg-black/40 px-2 py-1 rounded text-[11px]">
-              pl -i pylynx-desktop
+              wget https://github.com/24dkuizinas/Pylynx-Syscheck/raw/main/pylynx-compat.sh, sh pylynx-compat.sh
             </pre>
             <button
-              onClick={() => copy("pl -i pylynx-desktop")}
+              onClick={() => copy("wget https://github.com/24dkuizinas/Pylynx-Syscheck/raw/main/pylynx-compat.sh, sh pylynx-compat.sh")}
               className="text-[10px] underline text-zinc-400 hover:text-zinc-200"
             >
               Copy command
