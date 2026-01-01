@@ -8,7 +8,15 @@ export default function BootSequence() {
   const [typed, setTyped] = useState("");
 
   const fullText = "PyLynx OS";
+  
+interface BootSequenceProps {
+  onDone: () => void;
+}
 
+export default function BootSequence({ onDone }: BootSequenceProps) {
+
+
+  
   // Fade-in mount
   useEffect(() => {
     setTimeout(() => setMounted(true), 10);
