@@ -63,6 +63,10 @@ export default function BootSequence({ onDone }: BootSequenceProps) {
       </div>
 
       {/* Loading Bar */}
+{/* Audio Hint */}
+<div className="text-zinc-600 text-xs mt-4 animate-fade">
+  If the audio doesn’t work, press your mouse
+</div>
       <div className="w-64 h-2 bg-zinc-800 rounded-full overflow-hidden">
         <div className="h-full bg-zinc-500 animate-bootLoad"></div>
       </div>
