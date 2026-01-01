@@ -2,40 +2,40 @@
 
 import { useState, useEffect } from "react";
 
-export default function FirstLaunchOverlay() {
-  const [visible, setVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
-  const [typedText, setTypedText] = useState("");
-
-  const fullText = "Do you want to check out the lynx before you bite the apple?";
-
 interface FirstLaunchOverlayProps {
   onDone: () => void;
 }
 
 export default function FirstLaunchOverlay({ onDone }: FirstLaunchOverlayProps) {
+  const [visible, setVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [typedText, setTypedText] = useState("");
 
-  
+  const fullText =
+    "Do you want to check out the lynx before you bite the apple?";
+
   // Fade-in mount
   useEffect(() => {
     setTimeout(() => setMounted(true), 10);
   }, []);
 
-  // Typing animation
-useEffect(() => {
-  if (!visible) return; // only type when overlay is actually shown
+  // Typing animation — starts ONLY when visible
+  useEffect(() => {
+    if (!visible) return;
 
-  setTypedText(""); // reset typing each time it becomes visible
+    setTypedText(""); // reset typing when shown
 
-  let i = 0;
-  const interval = setInterval(() => {
-    setTypedText(fullText.slice(0, i));
-    i++;
-    if (i > fullText.length) clearInterval(interval);
-  }, 35);
+    let i = 0;
+    const interval = setInterval(() => {
+      setTypedText(fullText.slice(0, i));
+      i++;
+      if (i > fullText.length) clearInterval(interval);
+    }, 35);
 
-  return () => clearInterval(interval);
-}, [visible]);
+    return () => clearInterval(interval);
+  }, [visible]);
+
+  if (!visible) return null;
 
   return (
     <div
@@ -63,10 +63,20 @@ useEffect(() => {
           <span className="animate-blink">|</span>
         </div>
 
-        <button onClick={onDone} ...>
-  Continue
-</button>
+        <button
+          onClick={onDone}
+          className="
+            mt-4 px-6 py-2 rounded-lg bg-zinc-800 text-zinc-200
+            hover:bg-zinc-700 transition-all duration-150
+            hover:shadow-lg hover:shadow-black/40
+            active:scale-95 font-semibold
+          "
+        >
+          Continue
+        </button>
       </div>
     </div>
   );
 }
+
+
