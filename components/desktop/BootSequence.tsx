@@ -2,54 +2,27 @@
 
 import { useState, useEffect } from "react";
 
-export default function BootSequence() {
-  const [visible, setVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
-  const [typed, setTyped] = useState("");
-
-  const fullText = "PyLynx OS";
-  
 interface BootSequenceProps {
   onDone: () => void;
 }
 
 export default function BootSequence({ onDone }: BootSequenceProps) {
+  const [mounted, setMounted] = useState(false);
 
-
-  
   // Fade-in mount
   useEffect(() => {
     setTimeout(() => setMounted(true), 10);
   }, []);
 
+  // Auto-finish after 10 seconds
   useEffect(() => {
-  const audio = new Audio("/pylynx-chime.mp3");
-  audio.volume = 0.4;
-  audio.play().catch(() => {});
-}, []);
+    const timer = setTimeout(() => {
+      onDone();
+    }, 10000); // matches your 10s chime
 
-  // Typing animation
-  useEffect(() => {
-    if (!mounted) return;
+    return () => clearTimeout(timer);
+  }, [onDone]);
 
-    let i = 0;
-    const interval = setInterval(() => {
-      setTyped(fullText.slice(0, i));
-      i++;
-      if (i > fullText.length) clearInterval(interval);
-    }, 80);
-
-    return () => clearInterval(interval);
-  }, [mounted]);
-
-  // Auto-hide after 10 seconds (synced with boot chime)
-  useEffect(() => {
-  const timer = setTimeout(() => {
-    onDone();
-  }, 10000); // matches your 10s chime
-
-  return () => clearTimeout(timer);
-}, [onDone]);
   return (
     <div
       className={`
@@ -65,8 +38,7 @@ export default function BootSequence({ onDone }: BootSequenceProps) {
 
       {/* Typing Title */}
       <div className="text-3xl font-bold text-zinc-100 mb-4">
-        {typed}
-        <span className="animate-blink">|</span>
+        PyLynx OS<span className="animate-blink">|</span>
       </div>
 
       {/* Subtext */}
