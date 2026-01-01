@@ -25,11 +25,10 @@ export default function Bootloader({
 
   return (
     <div className="fixed inset-0 bg-black text-green-400 font-mono p-6 text-sm">
-      <div>PyLynx Bootloader</div>
-      <div className="mt-2 text-zinc-500 text-xs">
-        Press F2 for BIOS • Press Enter to continue
+      <div className="mb-2">PyLynx Bootloader</div>
+      <div className="text-zinc-500 text-xs">
+        Press B for BIOS • Press Enter to continue
       </div>
     </div>
   );
 }
-
