@@ -32,11 +32,15 @@ export default function Bootloader({
     <div
       ref={containerRef}
       tabIndex={0}
-      className="fixed inset-0 bg-red-600 text-white font-mono p-6 text-3xl z-[999999999]"
+      className="fixed inset-0 bg-black text-green-400 font-mono p-6 text-sm outline-none flex flex-col justify-center"
     >
-      BOOTLOADER SHOULD BE VISIBLE  
-      <div className="text-xl mt-4">
-        Press B for BIOS • Press Enter to continue
+      <div className="text-xl mb-2">PyLynx Bootloader</div>
+      <div className="text-zinc-400 text-xs mb-1">
+        Initializing fox‑core subsystems...
+      </div>
+      <div className="text-zinc-500 text-xs">
+        Press <span className="text-green-300">B</span> for BIOS • Press{"B"}
+        <span className="text-green-300">Enter</span> to continue
       </div>
     </div>
   );
