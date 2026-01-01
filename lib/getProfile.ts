@@ -1,4 +1,5 @@
-import { supabase } from "./supabase";
+import { getSupabase } from "./supabase";
+const supabase = getSupabase();
 
 export async function getProfile() {
   const { data: { session } } = await supabase.auth.getSession();
