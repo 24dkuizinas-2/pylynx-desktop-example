@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import { cookies } from "next/headers";
 
-interface DashboardLayoutProps {
+interface ProfileLayoutProps {
   children: ReactNode;
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function ProfileLayout({ children }: ProfileLayoutProps) {
   cookies(); // forces dynamic rendering
   return <>{children}</>;
 }
