@@ -39,25 +39,29 @@ export default function LoginPage() {
     router.push("/dashboard");
   };
 
-  // OAuth login (GitHub)
   const loginWithGitHub = () => {
-    supabase.auth.signInWithOAuth({
-      provider: "github",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-  };
+  supabase.auth.signInWithOAuth({
+    provider: "github",
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`,
+      queryParams: {
+        response_type: "code"
+      }
+    }
+  });
+};
 
-  // OAuth login (GitLab)
-  const loginWithGitLab = () => {
-    supabase.auth.signInWithOAuth({
-      provider: "gitlab",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
-  };
+const loginWithGitLab = () => {
+  supabase.auth.signInWithOAuth({
+    provider: "gitlab",
+    options: {
+      redirectTo: `${window.location.origin}/auth/callback`,
+      queryParams: {
+        response_type: "code"
+      }
+    }
+  });
+};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex items-center justify-center px-6">
