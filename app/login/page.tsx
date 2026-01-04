@@ -13,7 +13,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
 
-  // Load session safely
+  // Debug: show session if it exists
   useEffect(() => {
     async function load() {
       const { data: { session } } = await supabase.auth.getSession();
@@ -22,6 +22,7 @@ export default function LoginPage() {
     load();
   }, [supabase]);
 
+  // Email/password login
   const handleLogin = async () => {
     setErrorMsg("");
 
@@ -38,12 +39,24 @@ export default function LoginPage() {
     router.push("/dashboard");
   };
 
+  // OAuth login (GitHub)
   const loginWithGitHub = () => {
-    supabase.auth.signInWithOAuth({ provider: "github" });
+    supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
   };
 
+  // OAuth login (GitLab)
   const loginWithGitLab = () => {
-    supabase.auth.signInWithOAuth({ provider: "gitlab" });
+    supabase.auth.signInWithOAuth({
+      provider: "gitlab",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
   };
 
   return (
