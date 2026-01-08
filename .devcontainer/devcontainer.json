@@ -1,0 +1,4 @@
+{
+  "image": "mcr.microsoft.com/windows:10.0.17763.8146-amd64",
+  "features": {}
+}
