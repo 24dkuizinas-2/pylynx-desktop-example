@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   redirects: async () => [
     {
-      source: "/ads.txt",
+      source: "/app/ads.txt",
       destination: "https://srv.adstxtmanager.com/70772/deniskuizinas.space",
       permanent: true
     }
