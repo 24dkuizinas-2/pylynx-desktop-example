@@ -65,7 +65,7 @@ export default function HomePage() {
       {/* FOOTER */}
       <footer className="mt-12 flex justify-center pb-12">
         <a href="https://videos.deniskuizinas.space" target="_blank" rel="noopener noreferrer">
-          <Image src="/image.png" alt="Watch my Open.Video channel" width={600} height={340} className="rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition" />
+          <Image src="/image.png" alt="Watch my Open.Video channel" width={600} height={340} className="rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition" layout="responsive" />
         </a>
       </footer>
 
