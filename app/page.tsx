@@ -1,13 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function HomePage() {
   const router = useRouter();
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
-
       {/* TOP BAR WITH LOGIN */}
       <header className="w-full flex items-center justify-between px-6 py-4 border-b border-white/10">
         <div className="flex items-center gap-3">
@@ -62,6 +61,13 @@ export default function HomePage() {
           Every part of PyLynx is designed to be teachable and remixable.
         </p>
       </section>
+
+      {/* FOOTER */}
+      <footer className="mt-12 flex justify-center pb-12">
+        <a href="https://videos.deniskuizinas.space" target="_blank" rel="noopener noreferrer">
+          <Image src="/image.png" alt="Watch my Open.Video channel" width={600} height={340} className="rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition" />
+        </a>
+      </footer>
 
     </div>
   );
