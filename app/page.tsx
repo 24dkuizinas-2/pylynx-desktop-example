@@ -6,6 +6,11 @@ import Image from "next/image";
 export default function HomePage() {
   const router = useRouter();
   return (
+    <script
+      async
+      src={https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
+  crossOrigin="anonymous"
+      />
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
       {/* TOP BAR WITH LOGIN */}
       <header className="w-full flex items-center justify-between px-6 py-4 border-b border-white/10">
