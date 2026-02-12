@@ -1,17 +1,14 @@
 "use client";
-
+import Head from "next/head";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+
+export default function Page() { return ( <> <Head> <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`} crossOrigin="anonymous" /> </Head>
 
 export default function HomePage() {
   const router = useRouter();
   return (
    
-    <script
-  async
-  src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
-  crossOrigin="anonymous"
-/>
 
     <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
       {/* TOP BAR WITH LOGIN */}
