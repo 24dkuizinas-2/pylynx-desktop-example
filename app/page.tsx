@@ -15,7 +15,7 @@ export default function HomePage() {
           src="https://pylynxosproject1.statuspage.io/embed/script.js"></script>
           crossOrigin="anonymous"
           strategy="afterInteractive"      
-        />
+        
       
       
         <script
