@@ -24,7 +24,7 @@ export default function HomePage() {
           crossOrigin="anonymous"
           strategy="afterInteractive"
           
-      
+      ></script>
 
       <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
         {/* TOP BAR WITH LOGIN */}
