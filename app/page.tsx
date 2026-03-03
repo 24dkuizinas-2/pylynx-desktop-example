@@ -13,7 +13,7 @@ export default function HomePage() {
         <script
           async
           src="https://pylynxosproject1.statuspage.io/embed/script.js"></script>
-          crossOrigin="anonymous"
+          
                 
         
       
