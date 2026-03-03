@@ -7,6 +7,16 @@ import Image from "next/image";
 export default function HomePage() {
   const router = useRouter();
 
+   return (
+    <>
+      <Head>
+        <script
+          async
+          src="https://pylynxosproject1.statuspage.io/embed/script.js"></script>
+          crossOrigin="anonymous"
+        />
+      </Head>
+
   return (
     <>
       <Head>
