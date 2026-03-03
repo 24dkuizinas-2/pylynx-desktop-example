@@ -1,7 +1,7 @@
 "use client";
 
-import Head from "next/head";
 import { useRouter } from "next/navigation";
+import Script from "next/script";
 import Image from "next/image";
 
 export default function HomePage() {
@@ -9,23 +9,20 @@ export default function HomePage() {
 
    return (
     <>
-      <Head>
+      
         <script
           async
           src="https://pylynxosproject1.statuspage.io/embed/script.js"></script>
           crossOrigin="anonymous"
         />
-      </Head>
-
-  return (
-    <>
-      <Head>
+      
+      
         <script
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
           crossOrigin="anonymous"
         />
-      </Head>
+      
 
       <div className="min-h-screen bg-gradient-to-br from-black via-[#0a0014] to-[#12002b] text-white flex flex-col">
         {/* TOP BAR WITH LOGIN */}
