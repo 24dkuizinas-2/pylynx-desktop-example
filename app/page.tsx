@@ -14,7 +14,7 @@ export default function HomePage() {
           async
           src="https://pylynxosproject1.statuspage.io/embed/script.js"></script>
           crossOrigin="anonymous"
-          strategy="afterInteractive"      
+                
         
       
       
@@ -22,7 +22,7 @@ export default function HomePage() {
           async
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_GOOGLE_ADSENSE}`}
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          
           
       ></script>
 
